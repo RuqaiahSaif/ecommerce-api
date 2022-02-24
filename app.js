@@ -14,7 +14,8 @@ io.on('connection', (socket) => {
     });
 });
 
-const port = process.env.PORT || 3000;
+// new port
+const port = Process.env.PORT || 3000;
 app.set('view engine', 'ejs');
 app.use(express.static('public'));
 app.set('views', 'views');
@@ -61,7 +62,7 @@ app.get('/:prod_id([0-9]{0,10})', async (req, response) => {
 app.get('/products/category/:category', async (req, response) => {
 
     let category = req.params.category;
-    var response = await fetch('https://dummyjson.com/products/category/' +category)
+    var response = await fetch('https://dummyjson.com/products/category/' + category)
         .then(res => res.json())
         .then(res => response.render('catogry', { products: res.products, categories: null }));
 
